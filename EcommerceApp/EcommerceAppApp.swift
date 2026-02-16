@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct EcommerceAppApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+        
+        init() {
+            FirebaseApp.configure()
+        }
     var body: some Scene {
         WindowGroup {
             ContentView()

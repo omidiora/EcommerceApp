@@ -1,18 +1,16 @@
-//
-//  MainTabView.swift
-//  EcommerceApp
-//
-//  Created by Omidiora Emmanuel on 13/02/2026.
-//
-
 import SwiftUI
 
 struct MainTabView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ProductListView()
+                .tabItem { Label("Shop", systemImage: "bag") }
+            
+            OrdersView()
+                .tabItem { Label("Orders", systemImage: "list.bullet") }
+            
+            ProfileView()
+                .tabItem { Label("Profile", systemImage: "person") }
+        }
     }
-}
-
-#Preview {
-    MainTabView()
 }

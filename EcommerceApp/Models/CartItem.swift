@@ -1,8 +1,11 @@
-//
-//  CartItem.swift
-//  EcommerceApp
-//
-//  Created by Omidiora Emmanuel on 13/02/2026.
-//
+
 
 import Foundation
+
+
+
+struct CartItem: Codable, Identifiable {
+    let id: String
+    let product: Product
+    var quantity: Int = 1
+}

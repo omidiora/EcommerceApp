@@ -1,24 +1,18 @@
-//
-//  ContentView.swift
-//  EcommerceApp
-//
-//  Created by Omidiora Emmanuel on 13/02/2026.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var authVM = AuthViewModel()
+    @StateObject private var cartVM = CartViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            if authVM.isAuthenticated {
+                MainTabView()
+                    .environmentObject(cartVM)
+            } else {
+                AuthView()
+                    .environmentObject(authVM)
+            }
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }

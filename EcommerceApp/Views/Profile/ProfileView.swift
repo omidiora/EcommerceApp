@@ -1,18 +1,24 @@
-//
-//  ProfileView.swift
-//  EcommerceApp
-//
-//  Created by Omidiora Emmanuel on 13/02/2026.
-//
-
 import SwiftUI
-
+import FirebaseAuth
 struct ProfileView: View {
+    @EnvironmentObject var authVM: AuthViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                Section("Account") {
+                    if let email = Auth.auth().currentUser?.email {
+                        Text(email)
+                    }
+                }
+                
+                Section {
+                    Button("Logout", role: .destructive) {
+                        authVM.logout()
+                    }
+                }
+            }
+            .navigationTitle("Profile")
+        }
     }
-}
-
-#Preview {
-    ProfileView()
 }
